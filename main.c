@@ -210,6 +210,10 @@ send_file_header(const char *file_name, int *inject)
 		}
 		printf(RESPONSE_PROTOCOL " 200 OK\n");
 		printf("Content-Type: %s\n", mime);
+		printf("Access-Control-Allow-Origin: *\n");
+		printf("Cross-Origin-Embedder-Policy: require-corp\n");
+		printf("Cross-Origin-Opener-Policy: same-origin\n");
+		printf("Cache-Control: no-cache;\n");
 		printf("Content-Length: %ld\n", length);
 		printf("Last-Modified: %ld\n", buffer.st_mtime * 1000 + buffer.st_mtim.tv_nsec / 1000000);
 		printf("\n");
